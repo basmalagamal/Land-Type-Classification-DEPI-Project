@@ -1,4 +1,4 @@
-#Land Cover Classification Using Deep Learning
+##Land Cover Classification Using Deep Learning
 
 This project focuses on classifying geospatial images into 10 distinct land cover classes using a Convolutional Neural Network (CNN). It uses multi-band .tif satellite images and is designed to handle complex terrain types with high accuracy.
 
