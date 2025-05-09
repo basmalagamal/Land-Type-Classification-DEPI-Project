@@ -1,2 +1,4 @@
-# Land-Type-Classification-RNN-Project
-leveraging Deep Neural Networks (DNNs) to classify different land types (such as agriculture, water, urban  areas, desert, roads, and trees) based on satellite imagery from the European Space Agency’s Sentinel-2  mission. 
+#  Multiband Image Classification with ResNet
+
+This project builds and trains a ResNet50-based deep learning model to classify multiband satellite images into 10 land use/land cover categories. The dataset includes 8-channel images, and the model is trained using TensorFlow.
+
