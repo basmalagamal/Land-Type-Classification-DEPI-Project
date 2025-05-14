@@ -1,93 +1,87 @@
-##Land Cover Classification Using Deep Learning
+# Land Type Classification using Sentinel-2 Satellite Images
 
-This project focuses on classifying geospatial images into 10 distinct land cover classes using a Convolutional Neural Network (CNN). It uses multi-band .tif satellite images and is designed to handle complex terrain types with high accuracy.
+This project is a deep learning solution for automatically classifying different types of land (such as farms, water bodies, urban areas, roads, and forests) from Sentinel-2 satellite imagery. The model is trained on the EuroSAT dataset and deployed as an interactive web app using Streamlit.
 
-🗂️ Dataset
-Source: EuroSAT dataset (or your dataset source)
+## Features
+- Classifies satellite images into 10 land types
+- Uses a ResNet-based deep learning model
+- Includes PCA and NDVI/NDBI preprocessing
+- User-friendly Streamlit web interface
 
-Format: .tif images with multiple bands (e.g., RGB, NDVI)
+## Land Types
+- Annual Crop
+- Forest
+- Herbaceous Vegetation
+- Highway
+- Industrial
+- Pasture
+- Permanent Crop
+- Residential
+- River
+- Sea/Lake
 
-Classes:
+## Project Structure
+```
+├── app.py                # Streamlit web app
+├── deployment_utils.py   # Preprocessing and prediction utilities
+├── best_model.h5         # Trained Keras model
+├── pca.pkl               # PCA model (pickled)
+├── label_encoder.pkl     # LabelEncoder (pickled)
+├── requirements.txt      # Python dependencies
+└── README.md             # Project documentation
+```
+## Notebook
+- `Land_Type_Classification_using_Sentinel_2_Satellite_Images.ipynb`:  
+  This Jupyter notebook contains all steps for data exploration, preprocessing, model training, and exporting the trained model and encoders. Use it to reproduce or modify the training pipeline.
 
-AnnualCrop
+## Setup Instructions
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/basmalagamal/Land-Type-Classification-DEPI-Project.git
+   cd your-repo-name
+   ```
+2. **(Recommended) Create a virtual environment**
+   ```bash
+   conda create -n landclass python=3.10
+   conda activate landclass
+   conda install pip
+   ```
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Run the Streamlit app**
+   ```bash
+   streamlit run app.py
+   ```
 
-Forest
+## Usage
+- Upload a Sentinel-2 `.tif` satellite image via the web interface.
+- The app will display an RGB visualization and predict the land type with a confidence score.
 
-HerbaceousVegetation
+## Notes
+- Make sure `best_model.h5`, `pca.pkl`, and `label_encoder.pkl` are present in the project directory.
+- The app expects images in the same format as the EuroSAT dataset (Sentinel-2 `.tif` files with 13 bands).
+- The main branch contains the Jupyter notebook for data exploration and model training.  
+- The `Streamlit-Deployment` branch contains the Streamlit app and deployment code.
 
-Highway
+## Requirements
+- Python 3.10+
+- See `requirements.txt` for all dependencies
 
-Industrial
+## Credits
+- Model trained on the [EuroSAT dataset (GitHub)](https://github.com/phelber/eurosat)
+- EuroSAT dataset also available on [Kaggle](https://www.kaggle.com/datasets/apollo2506/eurosat-dataset)
+- Built with TensorFlow, scikit-learn, and Streamlit
 
-Pasture
+## Model Download
+Due to GitHub file size limits, download `best_model.h5` from [[Google Drive link here](https://drive.google.com/drive/folders/1bbqpKrO2U20FSr0LA82eE8KfqsJOdCr8?usp=drive_link)].
+Place it in the project directory before running the app.
 
-PermanentCrop
+## Branches
 
-Residential
+- **main**: Contains the Jupyter notebook for data exploration, preprocessing, and model training.
+- **Streamlit-Deployment**: Contains the Streamlit app, deployment utilities, trained model, and all files needed for deployment.
+---
 
-River
-
-SeaLake
-
-🖼️ Image Details
-Input Size: 64x64 pixels
-
-Bands: Typically 3 (RGB), but adaptable for multi-band input.
-
-Preprocessing: Images are normalized and augmented using the Albumentations library (rotation, flipping, brightness adjustment, etc.).
-
-🛠️ Model Architecture
-Backbone: ResNet50 (pre-trained on ImageNet)
-
-Input Layer: Modified to accept multi-band .tif images
-
-Output Layer: 10-class softmax
-
-Key Hyperparameters:
-
-Optimizer: Adam
-
-Learning Rate: 0.0001
-
-Batch Size: 32
-
-Epochs: 50
-
-Loss: Categorical Crossentropy
-
-📈 Performance Metrics
-Accuracy: ~95% on the test set
-
-Confusion Matrix Insights:
-
-Highest performance: SeaLake, River, Residential (f1-score ~0.98)
-
-Lower but solid: HerbaceousVegetation & PermanentCrop (f1-score ~0.90)
-
-Balanced precision & recall across all classes
-
-Macro & Weighted Averages:
-
-Precision: 0.95
-
-Recall: 0.95
-
-F1-Score: 0.95
-
-🌀 ROC Curve Analysis
-High AUC: SeaLake, River, Forest (~0.99)
-
-Slightly lower AUC: HerbaceousVegetation, PermanentCrop (~0.95–0.96)
-
-Micro-average AUC: ~0.95–0.96
-
-ROC curves show strong model performance with steep rises and high true positive rates.
-
-🖥️ Visualizations
-Confusion Matrix
-
-ROC Curves (one-vs-rest for all classes)
-
-Sample Predictions:
-
-True vs. Predicted labels for selected images
+**For questions or issues, please open an issue on GitHub.** 
