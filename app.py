@@ -9,7 +9,7 @@ import io
 import matplotlib.pyplot as plt
 from deployment_utils import load_deployment_model, load_pca_model, predict_image, get_rgb_image
 import requests
-
+import gdown 
 
 model_path = "best_model.h5"
 url = "https://drive.google.com/uc?id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
