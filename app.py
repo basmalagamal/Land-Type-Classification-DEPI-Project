@@ -7,6 +7,17 @@ from PIL import Image
 import io
 import matplotlib.pyplot as plt
 from deployment_utils import load_deployment_model, load_pca_model, predict_image, get_rgb_image
+import requests
+
+
+def download_model():
+    url = "https://drive.google.com/file/d/1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke/view?usp=drive_link/best_model.h5"
+    with open("best_model.h5", "wb") as f:
+        f.write(requests.get(url).content)
+
+if not os.path.exists("best_model.h5"):
+    download_model()
+
 
 # Set page config
 st.set_page_config(
