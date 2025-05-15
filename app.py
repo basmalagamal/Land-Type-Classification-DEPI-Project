@@ -12,16 +12,10 @@ import requests
 import gdown 
 
 model_path = "best_model.h5"
-url = "https://drive.google.com/uc?id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
-def download_model():
-    response = requests.get(model_url, stream=True)
-    with open(model_path, "wb") as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            if chunk:
-                f.write(chunk)
+url = "https://drive.google.com/uc?id=1UM7ZCLMrJgo36UqfcwPw1ajX6yx3g7uJ"
 
 if not os.path.exists(model_path):
-    download_model()
+    gdown.download(url, model_path, quiet=False)
     
 
 # Set page config
