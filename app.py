@@ -35,7 +35,7 @@ Upload a Sentinel-2 satellite image (.tif format) to get started.
 # Load models and encoders
 @st.cache_resource
 def load_models():
-    model = load_deployment_model('best_model.h5')
+    model = load_deployment_model(model_pat)
     pca_model = load_pca_model('pca_model.pkl')
     with open('label_encoder.pkl', 'rb') as f:
         label_encoder = pickle.load(f)
