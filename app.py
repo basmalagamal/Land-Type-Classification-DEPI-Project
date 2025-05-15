@@ -12,7 +12,7 @@ import requests
 
 
 def download_model():
-    url = "https://drive.google.com/file/d/1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke/view?usp=drive_link/best_model.h5"
+    url = "https://drive.google.com/uc?export=download&id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
     with open("best_model.h5", "wb") as f:
         f.write(requests.get(url).content)
 
