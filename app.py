@@ -11,14 +11,12 @@ from deployment_utils import load_deployment_model, load_pca_model, predict_imag
 import requests
 
 
-def download_model():
-    import gdown
-    url = "https://drive.google.com/uc?id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
-    output = "best_model.h5"
-    gdown.download(url, output, quiet=False)
+model_path = "best_model.h5"
+url = "https://drive.google.com/uc?id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
 
-if not os.path.exists("best_model.h5"):
-    download_model()
+if not os.path.exists(model_path):
+    gdown.download(url, model_path, quiet=False)
+    
 
 # Set page config
 st.set_page_config(
