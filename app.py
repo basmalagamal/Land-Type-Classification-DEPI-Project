@@ -1,4 +1,3 @@
-import os
 import streamlit as st
 import tensorflow as tf
 import numpy as np
@@ -9,16 +8,9 @@ import io
 import matplotlib.pyplot as plt
 from deployment_utils import load_deployment_model, load_pca_model, predict_image, get_rgb_image
 import requests
-import gdown 
 
-model_path = "best_model.h5"
-url = "https://drive.google.com/uc?id=1UM7ZCLMrJgo36UqfcwPw1ajX6yx3g7uJ"
 
-if not os.path.exists(model_path):
-    gdown.download(url, model_path, quiet=False)
-    
-
-# Set page config
+# Set page config 
 st.set_page_config(
     page_title="Land Type Classification",
     page_icon="🌍",
@@ -35,7 +27,7 @@ Upload a Sentinel-2 satellite image (.tif format) to get started.
 # Load models and encoders
 @st.cache_resource
 def load_models():
-    model = load_deployment_model(model_path)
+    model = load_deployment_model('best_model.h5')
     pca_model = load_pca_model('pca_model.pkl')
     with open('label_encoder.pkl', 'rb') as f:
         label_encoder = pickle.load(f)
