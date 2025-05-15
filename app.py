@@ -12,13 +12,13 @@ import requests
 
 
 def download_model():
-    url = "https://drive.google.com/uc?export=download&id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
-    with open("best_model.h5", "wb") as f:
-        f.write(requests.get(url).content)
+    import gdown
+    url = "https://drive.google.com/uc?id=1VGEo5syNKrgDOJZmOadcuwTIGrkr4oke"
+    output = "best_model.h5"
+    gdown.download(url, output, quiet=False)
 
 if not os.path.exists("best_model.h5"):
     download_model()
-
 
 # Set page config
 st.set_page_config(
