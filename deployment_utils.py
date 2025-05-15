@@ -89,3 +89,4 @@ def predict_image(model, image_path, pca_model, label_encoder):
     
     # Get class name
     class_name = label_encoder.inverse_transform([predicted_class])[0]
+    return class_name, confidence
